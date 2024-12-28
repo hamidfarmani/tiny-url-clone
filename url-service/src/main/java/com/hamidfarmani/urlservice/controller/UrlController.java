@@ -1,6 +1,7 @@
 package com.hamidfarmani.urlservice.controller;
 
 import com.hamidfarmani.urlservice.model.CreateURLRequest;
+import com.hamidfarmani.urlservice.model.UrlEntity;
 import com.hamidfarmani.urlservice.service.UrlService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class UrlController {
       return ResponseEntity.badRequest().body("API developer key and original URL are required.");
     }
 
-    String result = urlService.createShortUrl(request.originalUrl, request.customAlias,
+    UrlEntity result = urlService.createShortUrl(request.originalUrl, request.customAlias,
         request.apiDevKey, request.userName, request.expireDate);
 
     return ResponseEntity.ok(result);
