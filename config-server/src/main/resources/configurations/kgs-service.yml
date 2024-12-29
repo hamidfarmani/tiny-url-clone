@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: kgs-service
+  cloud:
+    discovery:
+      enabled: true
+  eureka:
+    instance:
+      prefer-ip-address: true
+      ip-address: 127.0.0.1
+      hostname: localhost
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kgs
+    username: myuser
+    password: mypass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  app:
+    name: kgs-service
+    description: Key Generation Service
+    version: 1.0.0
+
+
+server:
+  port: 8081

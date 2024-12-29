@@ -5,8 +5,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "kgs", url = "http://localhost:8081/kgs")
+@FeignClient(name = "gateway-service")
 public interface KeyGenerationServiceClient {
-  @GetMapping("/fetch")
+  @GetMapping("/kgs/fetch")
   List<String> fetchKeys(@RequestParam int count);
 }

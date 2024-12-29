@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: url-service
+          uri: lb://url-service
+          predicates:
+            - Path=/api/**
+        - id: kgs-service
+          uri: lb://kgs-service
+          predicates:
+            - Path=/kgs/**
+  discovery:
+    locator:
+      enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  app:
+    name: API-Gateway
+    description: API Gateway Service
+    version: 1.0.0
+
+server:
+  port: 8084

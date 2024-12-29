@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: url-service
+  cloud:
+    discovery:
+      enabled: true
+    loadbalancer:
+      retry:
+        enabled: true
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+
+  cassandra:
+    contact-points: localhost
+    port: 9042
+    keyspace-name: store
+    local-datacenter: datacenter1
+    schema-action: create_if_not_exists
+  data:
+    cassandra:
+      entity-base-package: com.hamidfarmani.urlservice.model
+
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+info:
+  app:
+    name: url-service
+    description: URL Shortening Service
+    version: 1.0.0
+
+server:
+  port: 8080

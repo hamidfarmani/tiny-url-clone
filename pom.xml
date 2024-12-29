@@ -19,6 +19,8 @@
 		<module>url-service</module>
 		<module>kgs</module>
 		<module>discovery</module>
+		<module>config-server</module>
+		<module>gateway</module>
 	</modules>
 
 	<url/>
@@ -43,8 +45,9 @@
 <!--			<dependency>-->
 <!--				<groupId>org.springframework.boot</groupId>-->
 <!--				<artifactId>spring-boot-starter</artifactId>-->
-<!--				<version>3.0.0</version>-->
+<!--				<version>3.3.2</version>-->
 <!--			</dependency>-->
+
 <!--		</dependencies>-->
 <!--	</dependencyManagement>-->
 </project>
